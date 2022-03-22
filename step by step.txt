@@ -13,23 +13,18 @@
 # run this command for setup container django environment
 5. python manage.py migrate
 
-6. it's ready
+6. djago and docker are ready.
 
-========
-Postgres
-========
+7. before run 'python load_csv_to_postgres.py' you need to inspect docker network and find pgdb ip and fill in file.
 
-docker exec -it pgdb psql -U postgres
-\c <database_name>
-\d
-\d + <database_name>
-\q
+8. run 'python load_csv_to_postgres.py' in django docker terminal.
 
-- create database housing;
+9. run 'docker exec -it pgdb psql -U postgres' in new terminal.
 
-- create table ak(price_usd integer, price_baht integer, bed integer, bath integer, sqft integer, sq_wah double precision, house_type varchar, address varchar, link varchar);
+10. check that data has loaded into table.
 
-- \copy ak from '/usr/src/app/housing_ak.csv' delimiter ',';
+11. Done!!
+
 ============
 
 In settings.py
