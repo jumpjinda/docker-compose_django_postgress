@@ -1,4 +1,3 @@
-# def load_csv_to_postgres(database, table):
 import psycopg2
 import csv
 
@@ -6,7 +5,7 @@ conn = psycopg2.connect(dbname="postgres", user='postgres', password='postgres',
 conn.autocommit = True
 
 cur = conn.cursor()
-cur.execute("CREATE DATABASE " + 'housing')
+cur.execute("CREATE DATABASE housing")
 conn.close()
 
 conn = psycopg2.connect(dbname="housing", user='postgres', password='postgres', host='172.27.0.2')
@@ -23,7 +22,7 @@ for state in state_list:
                         house_type varchar, address varchar, link varchar)")
             
     with conn.cursor() as cur:
-        with open('/usr/src/app/output-csv/housing_' + state + '.csv', 'r') as file:
+        with open('/usr/src/app/csv_files/housing_' + state + '.csv', 'r') as file:
             reader = csv.reader(file)
             for row in reader:
                 cur.execute("INSERT INTO " + state + " VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
