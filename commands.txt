@@ -1,10 +1,21 @@
-1. docker-compose run django django-admin startproject core . # for pull all image and setup project
+# for very first time for pull all image and setup project
+1. docker-compose run django django-admin startproject core .
+
+# after very first time we stop docker
 2. docker-compose down # stop docker-compose
+
+# run docker
 3. docker-compose up
-4. docker exec -it django bash # access to django container it's the same directory we have here
-5. python manage.py migrate # setup container django environment
+
+# access to django container it's the same directory we have here
+4. docker exec -it django bash
+
+# run this command for setup container django environment
+5. python manage.py migrate
+
 6. it's ready
 
+========
 Postgres
 ========
 
@@ -14,6 +25,11 @@ docker exec -it pgdb psql -U postgres
 \d + <database_name>
 \q
 
+- create database housing;
+
+- create table ak(price_usd integer, price_baht integer, bed integer, bath integer, sqft integer, sq_wah double precision, house_type varchar, address varchar, link varchar);
+
+- \copy ak from '/usr/src/app/housing_ak.csv' delimiter ',';
 ============
 
 In settings.py
